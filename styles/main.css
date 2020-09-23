@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-family: 'Inconsolata', monospace;
+  /* outline: 1px red solid; */
+}
+
+:root {
+  --background-main: white;
+  --background-accent: rgb(222, 244, 123);
+  --button-border: 2px darkgrey solid;
+}
+
+body {
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.6px;
+  background: var(--background-main);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+}
+
+#hero {
+  position: relative;
+  margin: 40px;
+  width: 100%;
+}
+
+#status {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  height: 12vw;
+  width: 25vw;
+  left: 3vw;
+  top: 3vw;
+}
+
+.status-gauge {
+  margin: 2vw;
+  text-align: right;
+}
+
+#name-age {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  background: var(--background-main);
+  right: 3vw;
+  top: 3vw;
+  height: 8vw;
+  width: 12vw;
+}
+
+#name-age p {
+  margin: 1vw;
+}
+
+#rename {
+  position: absolute;
+  background: var(--background-accent);
+  border: var(--button-border);
+  border-radius: 5px;
+  width: 8vw;
+  height: 5vw;
+  top: 17vh;
+  right: 4vw;
+}
+
+.box {
+  border: 2px darkgrey solid;
+}
+
+h1 {
+  position: absolute;
+  color: darkgrey;
+  background: var(--background-main);
+  text-align: center;
+  font-size: 4vw;
+  height: 5vw;
+  width: 38vw;
+  left: 33vw;
+  top: -4vh;
+  margin: 0;
+  padding: 4vw;
+  border-radius: 15px;
+
+}
+#nav {
+  position: absolute;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  left: 45vw;
+  top: 12vh;
+
+}
+.nav-button {
+  border-radius: 5px;
+  width: 8vw;
+  height: 5vw;
+}
+
+footer {
+  position: absolute;
+  background: var(--background-main);
+  align-self: flex-end;
+  height: 12vw;
+  width: 35vw;
+  border-radius: 15px;
+  left: 7vw;
+  bottom: 2vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.care-button {
+  background: var(--background-accent);
+  width: 6vw;
+  height: 6vw;
+  border-radius: 50%;
+  border: 2px darkgrey solid;
+}
