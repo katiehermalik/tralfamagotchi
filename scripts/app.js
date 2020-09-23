@@ -15,18 +15,21 @@
 // Create Game Over alert if any value reaches 0 or age reaches 3.
 
 
+class Pet {
+  constructor (name, age, sustenance, energy, engagement) {
+    this.name = name;
+    this.age = age;
+    this.sustenance = sustenance;
+    this.energy = energy;
+    this.engagement = engagement;
+  }
 
+}
 
+class Tralfamagotchi extends Pet {
+  constructor(name) {
+    super(name, 0, 10, 10, 10);
+  }
+}
 
-
-
-let sustenance = 10;
-let energy = 10;
-let engagement = 10;
-
-let name = Salo;
-let age = 0;
-
-
-
-
+const Salo = new Tralfamagotchi('Salo');
