@@ -63,6 +63,32 @@ body {
   margin: 1vw;
 }
 
+#rename-active {
+  position: absolute;
+  background: var(--background-accent);
+  border: var(--button-border);
+  border-radius: 5px;
+  width: 15vw;
+  height: 10vw;
+  top: 17vh;
+  right: 4vw;
+}
+
+#input {
+  position: absolute;
+  bottom: 8vh;
+  left: 1vw;
+  width: 10vw;
+}
+
+#submit {
+  position: absolute;
+  bottom: 2vh;
+  right: 4vw;
+  width: 5vw;
+  font-size: 1vw;
+}
+
 #rename {
   position: absolute;
   background: var(--background-accent);
@@ -73,6 +99,7 @@ body {
   top: 17vh;
   right: 4vw;
 }
+
 
 .box {
   border: 2px darkgrey solid;

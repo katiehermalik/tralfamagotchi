@@ -19,8 +19,21 @@ $('#play').on('click', () => {
   Salo.startStatusTimer();
 });
 
+$('#rename').on('click', () => {
+  // TO DO // css transition to larger div
+});
+
+$('#submit').on('click', () => {
+  let newName = $('#input').val();
+  $('#name').text(`Name: ${newName}`);
+  if (newName === "") {
+    $('#name').text(`Name: Salo`);
+  } 
+});
+
 $('#lights').on('click', () => {
   if (Salo.energy < 10) {
+  Salo.energy++;
   $('#energy').text(`Energy: ${Salo.energy}`);
   // TO DO // activates dark mode
   // TO DO // dark mode auto turn off when hits 10
@@ -63,18 +76,6 @@ class Pet {
     this.statusTimerId = 0;
   }
 
-  sustenance () {
-
-  }
-
-  energy () {
-
-  }
-
-  engagement () {
-
-  }
-
   startAgeTimer () {
     let self = this;
     self.ageTimerId = setInterval( function() {
@@ -109,10 +110,10 @@ class Pet {
 }
 
 class Tralfamagotchi extends Pet {
-  constructor(name) {
-    super(name, 0, 10, 10, 10);
-    $('#name').text(`Name: ${name}`)
+  constructor() {
+    super('Salo', 0, 10, 10, 10);
+    $('#name').text(`Name: Salo`)
   }
 }
 
-const Salo = new Tralfamagotchi('Salo');
+const Salo = new Tralfamagotchi();
