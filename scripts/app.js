@@ -19,10 +19,21 @@ $('#play').on('click', () => {
   Salo.startStatusTimer();
 });
 
-$('#food').on('click', () => {
+$('#lights').on('click', () => {
   if (Salo.energy < 10) {
   Salo.energy++;
-  $('#energy').text(`Energy: ${Salo.energy}`);
+  $('#energy').text(`energy: ${Salo.energy}`);
+  // TO DO // attach an animation to represent Salo sleeping
+  } else {
+  // TO DO // attach an animation - shake head 'no'
+  // TO DO // - lights won't stay off past 10
+  }
+});
+
+$('#food').on('click', () => {
+  if (Salo.sustenance < 10) {
+  Salo.sustenance++;
+  $('#sustenance').text(`sustenance: ${Salo.sustenance}`);
   // TO DO // attach an animation to represent Salo eating
   } else {
   // TO DO // attach an animation - shake head 'no'
@@ -32,8 +43,8 @@ $('#food').on('click', () => {
 $('#engage').on('click', () => {
   if (Salo.engagement < 10) {
   Salo.engagement++;
-  $('#engage').text(`Engagement: ${Salo.engagement}`);
-  // TO DO // attach an animation to represent Salo eating
+  $('#engagement').text(`Engagement: ${Salo.engagement}`);
+  // TO DO // attach an animation to represent Salo playing
   } else {
   // TO DO // attach an animation - shake head 'no'
   }
