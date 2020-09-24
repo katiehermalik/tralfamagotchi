@@ -37,14 +37,40 @@ body {
   justify-content: space-around;
   position: absolute;
   height: 12vw;
-  width: 25vw;
+  width: 28vw;
   left: 3vw;
   top: 3vw;
 }
+.status-guage {
+  display: flex;
+  justify-content: space-between;
+}
 
-.status-gauge {
-  margin: 2vw;
-  text-align: right;
+.statusCount {
+  font-size: 3vh;
+  margin: 1vh 1vw;
+  padding: 1vh 0 1vh;
+
+}
+
+.bar::-webkit-progress-bar {
+  background-color: lightgrey;
+  border-radius: 2px;
+
+}
+
+.bar::-webkit-progress-value {
+  background: rgb(226, 243, 139);
+  border-radius: 2px;
+  border: 1px darkgrey solid;
+}
+
+.bar {
+  background: none;
+	border-radius: 2px;
+  margin: 1vh 1vw 1vh 0;
+  width: 10vw;
+  flex: 1;
 }
 
 #name-age {

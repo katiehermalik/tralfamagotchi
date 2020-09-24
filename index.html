@@ -16,9 +16,18 @@
   
   <section id="hero" class="box">
     <section id="status" class="box">
-      <p id="sustenance" class="status-gauge">Sustenance: 10</p>
-      <p id="energy" class="status-gauge">Energy: 10</p>
-      <p id="engagement" class="status-gauge">Engagement: 10</p>
+      <div class="status-guage">
+        <p id="sustenance" class="statusCount">Sustenance: 10</p>
+        <progress id="sus-bar" class="statusCount bar" value="10" max="10"></progress>
+      </div>
+      <div class="status-guage">
+        <p id="energy" class="statusCount">Energy: 10</p>
+        <progress id="energy-bar" class="statusCount bar" value="10" max="10"></progress>
+      </div>
+      <div class="status-guage">
+        <p id="engagement" class="statusCount">Engagement: 10</p>
+        <progress id="engage-bar" class="statusCount bar" value="10" max="10"></progress>
+      </div>
     </section>
     <div id="nav">
       <button id="rules" class="nav-button box">Rules</button>
