@@ -89,7 +89,7 @@ body {
   font-size: 1vw;
 }
 
-#rename {
+/* #rename {
   position: absolute;
   background: var(--background-accent);
   border: var(--button-border);
@@ -98,7 +98,7 @@ body {
   height: 5vw;
   top: 17vh;
   right: 4vw;
-}
+} */
 
 
 .box {
@@ -133,6 +133,14 @@ h1 {
   border-radius: 5px;
   width: 8vw;
   height: 5vw;
+}
+
+
+img {
+  height: 40vh;
+  position: absolute;
+  bottom: 10vh;
+  right: 30vw;
 }
 
 footer {
