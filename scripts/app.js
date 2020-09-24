@@ -33,3 +33,10 @@ class Tralfamagotchi extends Pet {
 }
 
 const Salo = new Tralfamagotchi('Salo');
+
+
+$('#play').on('click', () => {
+
+
+});
+
