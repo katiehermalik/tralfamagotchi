@@ -14,6 +14,17 @@
       // - grab input value of form and update 'name'
 // Create Game Over alert if any value reaches 0 or age reaches 3.
 
+$('#play').on('click', () => {
+  Salo.startAgeTimer();
+  Salo.startStatusTimer();
+});
+
+$('#food').on('click', () => {
+  console.log(Salo.energy);
+  Salo.energy++;
+  $('#energy').text(`Energy: ${Salo.energy}`);
+  // TO DO // attach an animation to represent Salo eating
+});
 
 class Pet {
   constructor (name, age, sustenance, energy, engagement) {
@@ -25,6 +36,19 @@ class Pet {
     this.ageTimerId = 0;
     this.statusTimerId = 0;
   }
+
+  sustenance () {
+
+  }
+
+  energy () {
+
+  }
+
+  engagement () {
+
+  }
+
   startAgeTimer () {
     let self = this;
     self.ageTimerId = setInterval( function() {
@@ -66,12 +90,3 @@ class Tralfamagotchi extends Pet {
 }
 
 const Salo = new Tralfamagotchi('Salo');
-
-
-$('#play').on('click', () => {
-  Salo.startAgeTimer();
-  Salo.startStatusTimer();
-});
-
-
-console.log(Salo.age)
