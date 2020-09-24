@@ -22,21 +22,40 @@ class Pet {
     this.sustenance = sustenance;
     this.energy = energy;
     this.engagement = engagement;
+    this.ageTimerId = 0;
+    this.statusTimerId = 0;
   }
-
   startAgeTimer () {
     let self = this;
-    const timerId = setInterval( function() {
-      if (self.age === 2) {
+    self.ageTimerId = setInterval( function() {
+      if (self.age === 3) {
         alert('GAME OVER - So it goes.');
-        clearInterval(timerId);
-      }
+        clearInterval(self.ageTimerId);
+        clearInterval(self.statusTimerId);
+      } else {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
+        }
     }, 5000);
   }
 
-
+  startStatusTimer () {
+    let self = this;
+    self.statusTimerId = setInterval( function() {
+      if (self.sustenance === 0 || self.energy === 0 || self.engagement === 0) {
+        alert('GAME OVER - So it goes.');
+        clearInterval(self.statusTimerId);
+        clearInterval(self.ageTimerId);
+      } else {
+        self.sustenance--;
+        $('#sustenance').text(`Sustenance: ${self.sustenance}`);
+        self.energy--;
+        $('#energy').text(`Energy: ${self.energy}`);
+        self.engagement--;
+        $('#engagement').text(`Engagement: ${self.engagement}`);
+        }
+    }, 1000);
+  }
 }
 
 class Tralfamagotchi extends Pet {
@@ -51,6 +70,7 @@ const Salo = new Tralfamagotchi('Salo');
 
 $('#play').on('click', () => {
   Salo.startAgeTimer();
+  Salo.startStatusTimer();
 });
 
 
