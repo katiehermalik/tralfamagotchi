@@ -20,10 +20,23 @@ $('#play').on('click', () => {
 });
 
 $('#food').on('click', () => {
-  console.log(Salo.energy);
+  if (Salo.energy < 10) {
   Salo.energy++;
   $('#energy').text(`Energy: ${Salo.energy}`);
   // TO DO // attach an animation to represent Salo eating
+  } else {
+  // TO DO // attach an animation - shake head 'no'
+  }
+});
+
+$('#engage').on('click', () => {
+  if (Salo.engagement < 10) {
+  Salo.engagement++;
+  $('#engage').text(`Engagement: ${Salo.engagement}`);
+  // TO DO // attach an animation to represent Salo eating
+  } else {
+  // TO DO // attach an animation - shake head 'no'
+  }
 });
 
 class Pet {
