@@ -17,6 +17,7 @@
 $('#play').on('click', () => {
   Salo.startAgeTimer();
   Salo.startStatusTimer();
+  $('#play').prop('disabled', true);
 });
 
 $('#rename').on('click', () => {
@@ -32,8 +33,8 @@ $('#submit').on('click', () => {
 });
 
 $('#lights').on('click', () => {
-  if (Salo.energy < 10) {
-  Salo.energy++;
+  if (Salo.energy < 50) {
+  Salo.energy += 5;
   $('#energy').text(`Energy: ${Salo.energy}`);
   $('#energy-bar').val(`${Salo.energy}`);
   $('body').toggleClass('dark');
@@ -45,8 +46,8 @@ $('#lights').on('click', () => {
 });
 
 $('#food').on('click', () => {
-  if (Salo.sustenance < 10) {
-  Salo.sustenance++;
+  if (Salo.sustenance < 50) {
+  Salo.sustenance += 5;
   $('#sustenance').text(`Sustenance: ${Salo.sustenance}`);
   $('#sus-bar').val(`${Salo.sustenance}`);
   // TO DO // attach an animation to represent Salo eating
@@ -56,8 +57,8 @@ $('#food').on('click', () => {
 });
 
 $('#engage').on('click', () => {
-  if (Salo.engagement < 10) {
-  Salo.engagement++;
+  if (Salo.engagement < 50) {
+  Salo.engagement +=5;
   $('#engagement').text(`Engagement: ${Salo.engagement}`);
   $('#engage-bar').val(`${Salo.engagement}`);
   // TO DO // attach an animation to represent Salo playing
@@ -85,6 +86,9 @@ class Pet {
         alert('GAME OVER - So it goes.');
         clearInterval(self.ageTimerId);
         clearInterval(self.statusTimerId);
+        $('#food').prop('disabled', true);
+        $('#lights').prop('disabled', true);
+        $('#engage').prop('disabled', true);
       } else {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
@@ -99,12 +103,17 @@ class Pet {
         alert('GAME OVER - So it goes.');
         clearInterval(self.statusTimerId);
         clearInterval(self.ageTimerId);
+        $('#food').prop('disabled', true);
+        $('#lights').prop('disabled', true);
+        $('#engage').prop('disabled', true);
       } else if ($('body').hasClass('dark')) {
-          if (self.energy <= 9) {
+          if (self.energy <= 49) {
+            $('#food').prop('disabled', true);
+            $('#engage').prop('disabled', true);
             self.sustenance--;
             $('#sustenance').text(`Sustenance: ${self.sustenance}`);
             $('#sus-bar').val(`${self.sustenance}`);
-            self.energy++;
+            self.energy +=2;
             $('#energy').text(`Energy: ${self.energy}`);
             $('#energy-bar').val(`${self.energy}`);
             self.engagement--;
@@ -114,6 +123,8 @@ class Pet {
             $('body').toggleClass('dark');
           }
       } else {
+          $('#food').prop('disabled', false);
+          $('#engage').prop('disabled', false);
           self.sustenance--;
           $('#sustenance').text(`Sustenance: ${self.sustenance}`);
           $('#sus-bar').val(`${self.sustenance}`);
@@ -124,13 +135,13 @@ class Pet {
           $('#engagement').text(`Engagement: ${self.engagement}`);
           $('#engage-bar').val(`${self.engagement}`);
           }
-    }, 1000);
+    }, 500);
   }
 }
 
 class Tralfamagotchi extends Pet {
   constructor() {
-    super('Salo', 0, 10, 10, 10);
+    super('Salo', 0, 50, 50, 50);
     $('#name').text(`Name: Salo`)
   }
 }
