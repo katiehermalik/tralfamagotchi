@@ -35,9 +35,8 @@ $('#lights').on('click', () => {
   if (Salo.energy < 10) {
   Salo.energy++;
   $('#energy').text(`Energy: ${Salo.energy}`);
-  // TO DO // activates dark mode
-  // TO DO // dark mode auto turn off when hits 10
-  // TO DO // toggles a different timer
+  $('#energy-bar').val(`${Salo.energy}`);
+  $('body').toggleClass('dark');
   // TO DO // disable other buttons in dark mode
   // TO DO // attach an animation to represent Salo sleeping
   } else {
@@ -49,6 +48,7 @@ $('#food').on('click', () => {
   if (Salo.sustenance < 10) {
   Salo.sustenance++;
   $('#sustenance').text(`Sustenance: ${Salo.sustenance}`);
+  $('#sus-bar').val(`${Salo.sustenance}`);
   // TO DO // attach an animation to represent Salo eating
   } else {
   // TO DO // attach an animation - shake head 'no'
@@ -59,6 +59,7 @@ $('#engage').on('click', () => {
   if (Salo.engagement < 10) {
   Salo.engagement++;
   $('#engagement').text(`Engagement: ${Salo.engagement}`);
+  $('#engage-bar').val(`${Salo.engagement}`);
   // TO DO // attach an animation to represent Salo playing
   } else {
   // TO DO // attach an animation - shake head 'no'
@@ -80,6 +81,7 @@ class Pet {
     let self = this;
     self.ageTimerId = setInterval( function() {
       if (self.age === 3) {
+        // TO DO // Stop at 3
         alert('GAME OVER - So it goes.');
         clearInterval(self.ageTimerId);
         clearInterval(self.statusTimerId);
@@ -97,14 +99,31 @@ class Pet {
         alert('GAME OVER - So it goes.');
         clearInterval(self.statusTimerId);
         clearInterval(self.ageTimerId);
+      } else if ($('body').hasClass('dark')) {
+          if (self.energy <= 9) {
+            self.sustenance--;
+            $('#sustenance').text(`Sustenance: ${self.sustenance}`);
+            $('#sus-bar').val(`${self.sustenance}`);
+            self.energy++;
+            $('#energy').text(`Energy: ${self.energy}`);
+            $('#energy-bar').val(`${self.energy}`);
+            self.engagement--;
+            $('#engagement').text(`Engagement: ${self.engagement}`);
+            $('#engage-bar').val(`${self.engagement}`);
+          } else {
+            $('body').toggleClass('dark');
+          }
       } else {
-        self.sustenance--;
-        $('#sustenance').text(`Sustenance: ${self.sustenance}`);
-        self.energy--;
-        $('#energy').text(`Energy: ${self.energy}`);
-        self.engagement--;
-        $('#engagement').text(`Engagement: ${self.engagement}`);
-        }
+          self.sustenance--;
+          $('#sustenance').text(`Sustenance: ${self.sustenance}`);
+          $('#sus-bar').val(`${self.sustenance}`);
+          self.energy--;
+          $('#energy').text(`Energy: ${self.energy}`);
+          $('#energy-bar').val(`${self.energy}`);
+          self.engagement--;
+          $('#engagement').text(`Engagement: ${self.engagement}`);
+          $('#engage-bar').val(`${self.engagement}`);
+          }
     }, 1000);
   }
 }
