@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="styles/main.css">
+  <script defer src="https://kit.fontawesome.com/7c5632bfd1.js" crossorigin="anonymous"></script>
   <script defer src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script defer src="scripts/app.js"></script>
   <title>Tralfamagotchi</title>
 </head>
-<body>
+<body class="light">
   
   <section id="hero" class="box">
     <section id="status" class="box">
@@ -31,7 +30,9 @@
     </section>
     <div id="nav">
       <button id="rules" class="nav-button box">Rules</button>
-      <button id="play" class="nav-button box"></button>
+      <button id="play" class="nav-button box">
+        <p><i id="play-icon" class="far fa-play-circle animate__animated animate__fadeIn"></i></p>
+      </button>
       <button id="reset" class="nav-button box">Reset</button>
     </div>
     <h1 class="box">Tralfamagotchi</h1>
@@ -45,7 +46,7 @@
       <p id="name">Name: Salo</p>
       <p id="age">Age: 0</p>
     </section>
-    <img class="animate__animated animate__flip" src="./images/tralfamadorian-2285736_1920.png" alt="Tralfamadorian">
+    <img id="salo" class="animate__animated animate__lightSpeedInRight" src="./images/tralfamadorian-2285736_1920.png" alt="Tralfamadorian">
   </section>
   
 
