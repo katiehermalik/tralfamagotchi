@@ -206,11 +206,32 @@ p #play-icon {
   font-size: 5vh;
 }
 
-#salo {
-  height: 40vh;
+.salo {
   position: absolute;
   bottom: 10vh;
   right: 30vw;
+}
+
+#baby-salo {
+  height: 20vh;
+  animation: lightSpeedInRight;
+  --animate-delay: 1s;
+  animation-duration: 2s;
+  --animate-repeat: 3;
+} 
+
+.baby-morph-teen {
+  animation: jello;
+}
+
+#teen-salo {
+  height: 30vh;
+  display: none;
+}
+
+#adult-salo {
+  height: 40vh;
+  display: none;
 }
 
 #vonnegut {

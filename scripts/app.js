@@ -87,7 +87,7 @@ class Pet {
   startAgeTimer () {
     let self = this;
     self.ageTimerId = setInterval( function() {
-      if (self.age === 3) {
+      if (self.age === 2) {
         // TO DO // Stop at 3
         alert('GAME OVER - So it goes.');
         clearInterval(self.ageTimerId);
@@ -98,9 +98,16 @@ class Pet {
       } else {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
-        // TO DO // Morph Pet
+        if (self.age === 1) {
+          $('#baby-salo').fadeOut(1500);
+          $('#teen-salo').fadeIn(1500);
+        } else if (self.age === 2) {
+          $('#teen-salo').fadeOut(1500);
+          $('#adult-salo').fadeIn(1500);
+        }
+        // $("#myimage").position()
       }
-    }, 5000);
+    }, 2500);
   }
 
   startStatusTimer () {
