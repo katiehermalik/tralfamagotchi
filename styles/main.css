@@ -56,6 +56,7 @@ body {
 .status-guage {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .statusCount {
@@ -63,7 +64,6 @@ body {
   color: var(--text-color);
   margin: 1vh 1vw;
   padding: 1vh 0 1vh;
-
 }
 
 .bar::-webkit-progress-bar {
@@ -87,6 +87,7 @@ body {
 }
 
 #name-age {
+  font-size: 3vh;
   color: var(--text-color);
   display: flex;
   flex-direction: column;
@@ -95,8 +96,8 @@ body {
   background: var(--background-main);
   right: 3vw;
   top: 3vw;
-  height: 8vw;
-  width: 12vw;
+  height: 6vw;
+  width: 16vw;
 }
 
 #name-age p {
@@ -108,28 +109,31 @@ body {
   background: var(--background-accent);
   border: var(--button-border);
   border-radius: 5px;
-  width: 15vw;
+  width: 13vw;
   height: 10vw;
   top: 17vh;
   right: 4vw;
 }
 
 #input {
+  font-size: 3vh;
   position: absolute;
-  bottom: 8vh;
-  left: 1vw;
+  bottom: 10vh;
+  right: 1.4vw;
   width: 10vw;
 }
 
 #submit {
   position: absolute;
   bottom: 2vh;
-  right: 4vw;
+  right: 3.7vw;
   width: 5vw;
+  height: 2vw;
   font-size: 1vw;
 }
 
-/* #rename {
+#rename {
+  font-size: 3vh;
   position: absolute;
   background: var(--background-accent);
   border: var(--button-border);
@@ -138,7 +142,7 @@ body {
   height: 5vw;
   top: 17vh;
   right: 4vw;
-} */
+}
 
 
 .box {
@@ -171,6 +175,7 @@ h1 {
 
 }
 .nav-button {
+  font-size: 3vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,14 +188,6 @@ h1 {
 }
 
 .nav-button:active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--background-main);
-  color: var(--text-color);
-  border-radius: 5px;
-  width: 8vw;
-  height: 5vw;
   -webkit-box-shadow: 4px 2px 2px -2px rgba(0,0,0,0.75);
 }
 
@@ -201,8 +198,6 @@ h1 {
 }
 
 #play:active {
-  height: 12vh;
-  background: var(--background-accent);
   -webkit-box-shadow: 4px 3px 4px -2px rgba(0,0,0,0.75);
 }
 
@@ -241,6 +236,7 @@ footer {
 }
 
 .care-button {
+  font-size: 3vh;
   background: var(--background-accent);
   color: var(--text-color);
   width: 6vw;
@@ -251,10 +247,5 @@ footer {
 }
 
 .care-button:active {
-  color: var(--text-color);
-  width: 6vw;
-  height: 6vw;
-  border-radius: 50%;
-  border: 2px darkgrey solid;
   -webkit-box-shadow: 4px 3px 3px -2px rgba(0,0,0,0.75);
 }

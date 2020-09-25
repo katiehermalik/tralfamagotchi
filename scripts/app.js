@@ -14,6 +14,8 @@
       // - grab input value of form and update 'name'
 // Create Game Over alert if any value reaches 0 or age reaches 3.
 
+
+
 $('#play').on('click', () => {
   Salo.startAgeTimer();
   Salo.startStatusTimer();
@@ -21,12 +23,16 @@ $('#play').on('click', () => {
 });
 
 $('#rename').on('click', () => {
-  // TO DO // css transition to larger div
+  $('#rename-active').slideToggle();
+  $('#rename').slideToggle();
 });
 
 $('#submit').on('click', () => {
   let newName = $('#input').val();
   $('#name').text(`Name: ${newName}`);
+  $('#rename-active').slideToggle();
+  $('#rename').slideToggle();
+  $('#input').val('');
   if (newName === "") {
     $('#name').text(`Name: Salo`);
   } 
@@ -34,10 +40,10 @@ $('#submit').on('click', () => {
 
 $('#lights').on('click', () => {
   if (Salo.energy < 50) {
-  Salo.energy += 5;
-  $('#energy').text(`Energy: ${Salo.energy}`);
-  $('#energy-bar').val(`${Salo.energy}`);
-  $('body').toggleClass('dark');
+    Salo.energy += 5;
+    $('#energy').text(`Energy: ${Salo.energy}`);
+    $('#energy-bar').val(`${Salo.energy}`);
+    $('body').toggleClass('dark');
   // TO DO // disable other buttons in dark mode
   // TO DO // attach an animation to represent Salo sleeping
   } else {
@@ -47,9 +53,9 @@ $('#lights').on('click', () => {
 
 $('#food').on('click', () => {
   if (Salo.sustenance < 50) {
-  Salo.sustenance += 5;
-  $('#sustenance').text(`Sustenance: ${Salo.sustenance}`);
-  $('#sus-bar').val(`${Salo.sustenance}`);
+    Salo.sustenance += 5;
+    $('#sustenance').text(`Sustenance: ${Salo.sustenance}`);
+    $('#sus-bar').val(`${Salo.sustenance}`);
   // TO DO // attach an animation to represent Salo eating
   } else {
   // TO DO // attach an animation - shake head 'no'
@@ -58,9 +64,9 @@ $('#food').on('click', () => {
 
 $('#engage').on('click', () => {
   if (Salo.engagement < 50) {
-  Salo.engagement +=5;
-  $('#engagement').text(`Engagement: ${Salo.engagement}`);
-  $('#engage-bar').val(`${Salo.engagement}`);
+    Salo.engagement +=5;
+    $('#engagement').text(`Engagement: ${Salo.engagement}`);
+    $('#engage-bar').val(`${Salo.engagement}`);
   // TO DO // attach an animation to represent Salo playing
   } else {
   // TO DO // attach an animation - shake head 'no'
@@ -92,7 +98,8 @@ class Pet {
       } else {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
-        }
+        // TO DO // Morph Pet
+      }
     }, 5000);
   }
 
