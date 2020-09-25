@@ -22,6 +22,10 @@ $('#play').on('click', () => {
   $('#play').prop('disabled', true);
 });
 
+$('#reset').on('click', () => {
+  document.location.reload(true);
+});
+
 $('#rename').on('click', () => {
   $('#rename-active').slideToggle();
   $('#rename').slideToggle();
@@ -99,12 +103,12 @@ class Pet {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
         if (self.age === 1) {
-          $('#baby-salo').fadeOut(1500);
-          $('#teen-salo').fadeIn(1500);
+          $('#baby-salo').fadeOut(1500)
+          $('#teen-salo').fadeIn(1500)
         } else if (self.age === 2) {
-          $('#teen-salo').fadeOut(1500);
+          $('#teen-salo').fadeOut(1500)
           $('#adult-salo').fadeIn(1500);
-        }
+        } 
         // $("#myimage").position()
       }
     }, 2500);
