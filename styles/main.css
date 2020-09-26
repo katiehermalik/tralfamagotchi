@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 
+/* ----------------------------------------------------- Global */
+
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
   font-family: 'Inconsolata', monospace;
   outline: none;
 }
@@ -25,6 +26,12 @@
   --progress-background: black;
 }
 
+.box {
+  border: 2px darkgrey solid;
+}
+
+/* ----------------------------------------------------- Body & Hero */
+
 body {
   min-height: 100vh;
   font-size: 16px;
@@ -39,9 +46,11 @@ body {
 
 #hero {
   position: relative;
-  margin: 40px;
+  margin: 5vw;
   width: 100%;
 }
+
+/* ----------------------------------------------------- Status Section */
 
 #status {
   display: flex;
@@ -53,6 +62,7 @@ body {
   left: 3vw;
   top: 3vw;
 }
+
 .status-guage {
   display: flex;
   justify-content: space-between;
@@ -68,14 +78,16 @@ body {
 
 .bar::-webkit-progress-bar {
   background-color: var(--progress-background);
-  border-radius: 2px;
+  border-radius: 6px;
   height: 2vh;
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.60);
 }
 
 .bar::-webkit-progress-value {
   background: var(--progress-bar);
-  border-radius: 2px;
+  border-radius: 6px;
   border: 1px darkgrey solid;
+  -webkit-box-shadow: inset 1px -3px 3px -2px rgba(0,0,0,0.60);
 }
 
 .bar {
@@ -86,79 +98,25 @@ body {
   flex: 1;
 }
 
-#name-age {
-  font-size: 3vh;
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: absolute;
-  background: var(--background-main);
-  right: 3vw;
-  top: 3vw;
-  height: 6vw;
-  width: 16vw;
-}
+/* ----------------------------------------------------- Navigation */
 
-#name-age p {
-  margin: 1vw;
-}
-
-#rename-active {
-  position: absolute;
-  background: var(--background-accent);
-  border: var(--button-border);
-  border-radius: 5px;
-  width: 13vw;
-  height: 10vw;
-  top: 17vh;
-  right: 4vw;
-}
-
-#input {
-  font-size: 3vh;
-  position: absolute;
-  bottom: 10vh;
-  right: 1.4vw;
-  width: 10vw;
-}
-
-#submit {
-  position: absolute;
-  bottom: 2vh;
-  right: 3.7vw;
-  width: 5vw;
-  height: 2vw;
-  font-size: 1vw;
-}
-
-#rename {
-  font-size: 3vh;
-  position: absolute;
-  background: var(--background-accent);
-  border: var(--button-border);
-  border-radius: 5px;
-  width: 8vw;
-  height: 5vw;
-  top: 17vh;
-  right: 4vw;
-}
-
-
-.box {
-  border: 2px darkgrey solid;
+header {
+ position: relative;
+ top: -4vh;
+ left: 33vw;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ width: 38vw;
 }
 
 h1 {
-  position: absolute;
   color: rgb(107, 107, 107);
   background: var(--background-main);
   text-align: center;
   font-size: 4vw;
   height: 5vw;
   width: 38vw;
-  left: 33vw;
-  top: -4vh;
   margin: 0;
   padding: 4vw;
   border-radius: 15px;
@@ -166,12 +124,11 @@ h1 {
 }
 
 #nav {
-  position: absolute;
   height: 10vh;
   display: flex;
   justify-content: center;
   left: 45vw;
-  top: 12vh;
+  top: 8vh;
 
 }
 .nav-button {
@@ -191,6 +148,75 @@ h1 {
   -webkit-box-shadow: 4px 2px 2px -2px rgba(0,0,0,0.75);
 }
 
+/* ----------------------------------------------------- Name/Age Section */
+
+#container-name-age {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  top: -20vh;
+  left: 73vw;
+  width: 15vw;
+  height: 36vh
+ }
+
+#name-age {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 3vh;
+  color: var(--text-color);
+  background: var(--background-main);
+  height: 6vw;
+  width: 15vw;
+}
+
+#name-age p {
+  margin: 1vw;
+}
+
+#rename {
+  font-size: 3vh;
+  background: var(--background-accent);
+  border: var(--button-border);
+  border-radius: 5px;
+  width: 15vw;
+  height: 6vh;
+}
+
+#rename-active {
+  background: var(--background-accent);
+  border: var(--button-border);
+  border-radius: 5px;
+  width: 15vw;
+  height: 18vh;
+}
+
+#rename-active-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 13vw;
+  height: 10vw;
+}
+
+#input {
+  font-size: 3vh;
+  width: 10vw;
+}
+
+#submit {
+  width: 5vw;
+  height: 2vw;
+  font-size: 1vw;
+}
+
+
+
+/* ------------------------------------------------------- Play Button */
+
 #play {
   height: 12vh;
   background: var(--background-accent);
@@ -206,40 +232,35 @@ p #play-icon {
   font-size: 5vh;
 }
 
+/* ---------------------------------------------------------- Animations */
+
+/* @keyframes salomove {
+  from {right: 25vw;}
+  to {right: 30vw;}
+} */
+
 .salo {
   position: absolute;
-  bottom: 10vh;
-  right: 30vw;
+  bottom: 17vh;
+  right: 25vw;
+  animation: salomove 1s ease-in-out;
 }
 
 #baby-salo {
-  height: 20vh;
-  animation: lightSpeedInRight;
-  --animate-delay: 1s;
-  animation-duration: 2s;
-  --animate-repeat: 3;
+  height: 30vh;
 } 
 
-.baby-morph-teen {
-  animation: jello;
-}
-
 #teen-salo {
-  height: 30vh;
-  display: none;
-}
-
-#adult-salo {
   height: 40vh;
   display: none;
 }
 
-#vonnegut {
-  height: 20vh;
-  position: absolute;
-  bottom: 5vh;
-  right: 3vw;
+#adult-salo {
+  height: 50vh;
+  display: none;
 }
+
+/* ---------------------------------------------------------- Care Buttons */
 
 footer {
   position: absolute;
@@ -249,7 +270,7 @@ footer {
   width: 35vw;
   border-radius: 15px;
   left: 7vw;
-  bottom: 2vh;
+  bottom: 4vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -257,7 +278,7 @@ footer {
 }
 
 .care-button {
-  font-size: 3vh;
+  font-size: 1.4vw;
   background: var(--background-accent);
   color: var(--text-color);
   width: 6vw;

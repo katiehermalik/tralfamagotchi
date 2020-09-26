@@ -14,6 +14,16 @@
 <body class="light">
   
   <section id="hero" class="box">
+    <header>
+      <h1 class="box">Tralfamagotchi</h1>
+      <div id="nav">
+        <button id="rules" class="nav-button box">Rules</button>
+        <button id="play" class="nav-button box">
+          <p><i id="play-icon" class="far fa-play-circle animate__animated animate__fadeIn"></i></p>
+        </button>
+        <button id="reset" class="nav-button box">Reset</button>
+      </div>
+    </header>
     <section id="status" class="box">
       <div class="status-guage">
         <p id="sustenance" class="statusCount">Sustenance: 50</p>
@@ -28,27 +38,22 @@
         <progress id="engage-bar" class="statusCount bar" value="50" max="50"></progress>
       </div>
     </section>
-    <div id="nav">
-      <button id="rules" class="nav-button box">Rules</button>
-      <button id="play" class="nav-button box">
-        <p><i id="play-icon" class="far fa-play-circle animate__animated animate__fadeIn"></i></p>
-      </button>
-      <button id="reset" class="nav-button box">Reset</button>
+    <div id="container-name-age">
+      <section id="name-age" class="box">
+        <p id="name">Name: Salo</p>
+        <p id="age">Age: 0</p>
+      </section>
+      <div hidden id="rename-active">
+        <div id="rename-active-flex">
+          <input id="input" placeholder="Salo" maxlength="6">
+          <button id="submit">Submit</button>
+        </div>
+      </div>
+      <button id="rename">Rename</button>
     </div>
-    <h1 class="box">Tralfamagotchi</h1>
-
-    <div hidden id="rename-active">
-      <input id="input" placeholder="Salo" maxlength="8">
-      <button id="submit">Submit</button>
-    </div>
-    <button id="rename">Rename</button>
-    <section id="name-age" class="box">
-      <p id="name">Name: Salo</p>
-      <p id="age">Age: 0</p>
-    </section>
-    <img id="baby-salo" class="salo" src="./images/tralfamadorian-2285736_1920.png" alt="Tralfamadorian">
-    <img id="teen-salo" class="salo" src="./images/tralfamadorian-2285736_1920.png" alt="Tralfamadorian">
-    <img id="adult-salo" class="salo" src="./images/tralfamadorian-2285736_1920.png" alt="Tralfamadorian">
+    <img id="baby-salo" class="salo" src="./images/Tralfamadorian.gif" alt="Tralfamadorian">
+    <img id="teen-salo" class="salo" src="./images/Tralfamadorian.gif" alt="Tralfamadorian">
+    <img id="adult-salo" class="salo" src="./images/Tralfamadorian.gif" alt="Tralfamadorian">
   </section>
   
 
