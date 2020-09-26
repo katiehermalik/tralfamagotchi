@@ -42,39 +42,16 @@ $('#submit').on('click', () => {
   } 
 });
 
-$('#lights').on('click', () => {
-  if (Salo.energy < 50) {
-    Salo.energy += 5;
-    $('#energy').text(`Energy: ${Salo.energy}`);
-    $('#energy-bar').val(`${Salo.energy}`);
-    $('body').toggleClass('dark');
-  // TO DO // disable other buttons in dark mode
-  // TO DO // attach an animation to represent Salo sleeping
-  } else {
-  // TO DO // attach an animation - shake head 'no'
-  }
+$('#food').on('click', () => {
+  Salo.isHungry();
 });
 
-$('#food').on('click', () => {
-  if (Salo.sustenance < 50) {
-    Salo.sustenance += 5;
-    $('#sustenance').text(`Sustenance: ${Salo.sustenance}`);
-    $('#sus-bar').val(`${Salo.sustenance}`);
-  // TO DO // attach an animation to represent Salo eating
-  } else {
-  // TO DO // attach an animation - shake head 'no'
-  }
+$('#lights').on('click', () => {
+  Salo.isSleepy();
 });
 
 $('#engage').on('click', () => {
-  if (Salo.engagement < 50) {
-    Salo.engagement +=5;
-    $('#engagement').text(`Engagement: ${Salo.engagement}`);
-    $('#engage-bar').val(`${Salo.engagement}`);
-  // TO DO // attach an animation to represent Salo playing
-  } else {
-  // TO DO // attach an animation - shake head 'no'
-  }
+  Salo.isBored();
 });
 
 class Pet {
@@ -87,6 +64,40 @@ class Pet {
     this.ageTimerId = 0;
     this.statusTimerId = 0;
   }
+
+  isHungry () {
+    if (this.sustenance < 50) {
+      this.sustenance++;
+      $('#sustenance').text(`Sustenance: ${this.sustenance}`);
+      $('#sus-bar').val(`${this.sustenance}`);
+    // TO DO // attach an animation to represent Salo eating
+    } else {
+    // TO DO // attach an animation - shake head 'no'
+    }
+  };
+
+  isSleepy () {
+    if (this.energy < 50) {
+      this.energy++;
+      $('#energy').text(`Energy: ${this.energy}`);
+      $('#energy-bar').val(`${this.energy}`);
+      $('body').toggleClass('dark');
+    // TO DO // attach an animation to represent Salo sleeping
+    } else {
+    // TO DO // attach an animation - shake head 'no'
+    }
+  };
+
+  isBored () {
+    if (this.engagement < 50) {
+      this.engagement++;
+      $('#engagement').text(`Engagement: ${this.engagement}`);
+      $('#engage-bar').val(`${this.engagement}`);
+    // TO DO // attach an animation to represent Salo playing
+    } else {
+    // TO DO // attach an animation - shake head 'no'
+    }
+  };
 
   startAgeTimer () {
     let self = this;
@@ -111,7 +122,7 @@ class Pet {
         } 
         // $("#myimage").position()
       }
-    }, 2500);
+    }, 20000);
   }
 
   startStatusTimer () {
@@ -131,7 +142,7 @@ class Pet {
             self.sustenance--;
             $('#sustenance').text(`Sustenance: ${self.sustenance}`);
             $('#sus-bar').val(`${self.sustenance}`);
-            self.energy +=2;
+            self.energy += 2;
             $('#energy').text(`Energy: ${self.energy}`);
             $('#energy-bar').val(`${self.energy}`);
             self.engagement--;
