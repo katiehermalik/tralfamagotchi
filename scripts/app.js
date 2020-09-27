@@ -15,10 +15,11 @@
 // Create Game Over alert if any value reaches 0 or age reaches 3.
 
 
-
 $('#play').on('click', () => {
   Salo.startAgeTimer();
   Salo.startStatusTimer();
+  setTimeout(saloMove, 167);
+  gifSwitch()
   $('#play').prop('disabled', true);
 });
 
@@ -70,10 +71,7 @@ class Pet {
       this.sustenance++;
       $('#sustenance').text(`Sustenance: ${this.sustenance}`);
       $('#sus-bar').val(`${this.sustenance}`);
-    // TO DO // attach an animation to represent Salo eating
-    } else {
-    // TO DO // attach an animation - shake head 'no'
-    }
+    } 
   };
 
   isSleepy () {
@@ -82,9 +80,6 @@ class Pet {
       $('#energy').text(`Energy: ${this.energy}`);
       $('#energy-bar').val(`${this.energy}`);
       $('body').toggleClass('dark');
-    // TO DO // attach an animation to represent Salo sleeping
-    } else {
-    // TO DO // attach an animation - shake head 'no'
     }
   };
 
@@ -93,9 +88,6 @@ class Pet {
       this.engagement++;
       $('#engagement').text(`Engagement: ${this.engagement}`);
       $('#engage-bar').val(`${this.engagement}`);
-    // TO DO // attach an animation to represent Salo playing
-    } else {
-    // TO DO // attach an animation - shake head 'no'
     }
   };
 
@@ -104,9 +96,11 @@ class Pet {
     self.ageTimerId = setInterval( function() {
       if (self.age === 2) {
         // TO DO // Stop at 3
-        alert('GAME OVER - So it goes.');
+        $('#adult-salo').addClass('fade').css({opacity: 0,});
+        // alert('GAME OVER - So it goes.');
         clearInterval(self.ageTimerId);
         clearInterval(self.statusTimerId);
+        clearInterval(moveTimerId);
         $('#food').prop('disabled', true);
         $('#lights').prop('disabled', true);
         $('#engage').prop('disabled', true);
@@ -114,24 +108,27 @@ class Pet {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
         if (self.age === 1) {
-          $('#baby-salo').fadeOut(1500)
+          $('#baby-salo').addClass('fade').css({opacity: 0,});
           $('#teen-salo').fadeIn(1500)
         } else if (self.age === 2) {
           $('#teen-salo').fadeOut(1500)
           $('#adult-salo').fadeIn(1500);
         } 
-        // $("#myimage").position()
       }
-    }, 20000);
+    }, 10000);
   }
 
   startStatusTimer () {
     let self = this;
     self.statusTimerId = setInterval( function() {
       if (self.sustenance === 0 || self.energy === 0 || self.engagement === 0) {
-        alert('GAME OVER - So it goes.');
+        $('#baby-salo').addClass('fade').css({opacity: 0,});
+        $('#teen-salo').addClass('fade').css({opacity: 0,});
+        $('#adult-salo').fadeOut(1500);
+        // alert('GAME OVER - So it goes.');
         clearInterval(self.statusTimerId);
         clearInterval(self.ageTimerId);
+        clearInterval(moveTimerId);
         $('#food').prop('disabled', true);
         $('#lights').prop('disabled', true);
         $('#engage').prop('disabled', true);
@@ -176,3 +173,36 @@ class Tralfamagotchi extends Pet {
 }
 
 const Salo = new Tralfamagotchi();
+
+
+function gifSwitch() {
+  $('#still-salo').hide();
+  $('#baby-salo').show();
+}
+
+let headedLeft = true;
+
+function saloMove() {
+  moveTimerId = setInterval( function () {
+    if (headedLeft === true) {
+      if ($('.salo').position().left > 50) {
+      $('.salo').animate({left: '-=4vw'}, 500, 'swing');
+      } else if ($('.salo').position().left < 50) {
+        console.log($('.salo').position());
+        $('.salo').css('transform', 'scaleX(-1)');
+        $('.salo').animate({left: '+=4vw'}, 500, 'swing');
+        headedLeft = false;
+      }
+    
+    } else if (headedLeft === false) {
+      console.log($('.salo').position());
+      if ($('.salo').position().left < 650) {
+      $('.salo').animate({left: '+=4vw'}, 500, 'swing');
+      } else if ($('.salo').position().left > 650) {
+        $('.salo').css('transform', 'scaleX(1)');
+        $('.salo').animate({left: '-=4vw'}, 500, 'swing'); 
+        headedLeft = true
+      }
+    }   
+  }, 1350);
+}
