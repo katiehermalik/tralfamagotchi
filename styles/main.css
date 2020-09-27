@@ -129,7 +129,7 @@ h1 {
   justify-content: center;
   left: 45vw;
   top: 8vh;
-
+  z-index: 4;
 }
 .nav-button {
   font-size: 3vh;
@@ -165,7 +165,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 3vh;
+  font-size: 2vh;
   color: var(--text-color);
   background: var(--background-main);
   height: 6vw;
@@ -177,7 +177,7 @@ h1 {
 }
 
 #rename {
-  font-size: 2.5vh;
+  font-size: 2vh;
   background: var(--background-accent);
   border: var(--button-border);
   border-radius: 5px;
@@ -232,6 +232,7 @@ h1 {
 p #play-icon {
   color: rgb(107, 107, 107);
   font-size: 5vh;
+  padding: 4px;
 }
 
 /* ---------------------------------------------------------- Animations */
@@ -250,10 +251,6 @@ p #play-icon {
   height: 22vh;
   opacity: 1;
 }
-
-/* .fade {
-  transition: opacity 1s ease-in;
-} */
 
 #baby-sleep{
   height: 22vh;
@@ -331,14 +328,13 @@ footer {
 
 /* ---------------------------------------------------------- Modal */
 
-/* .popup-content {
+.popup-content {
   position: relative;
   width: 50vw;
   height: 50vh;
   background: var(--background-accent);
   opacity: 1;
   z-index: 10;
-  display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 20px;
@@ -350,7 +346,6 @@ footer {
   width: 100%;
   height: 100%;
   z-index: 8;
-  display: flex;
   justify-content: space-around;
   align-items: center;
 }
@@ -365,32 +360,25 @@ footer {
 }
 
 .quote {
-  font-size: 16px;
-  line-height: 3vh;
-  padding: 1vh 2vh 3vh 2vh;
+  font-size: 3vh;
+  line-height: 3.3vh;
+  padding: 2vh 1vh;
   margin: 0;
-  width: 400px;
+  width: 40vw;
 }
 
 .popup-content h2 {
+ font-size: 5vh;
  margin-top: 7vh;
+ width: 40vw;
 }
 
 .close {
   font-size: 3vh;;
   height: 4vh;
-  align-self: flex-end;
-  margin-right: 10vw
-}
-.modal-footer {
-  display: flex;
-  justify-content: space-around;
-  height: 5vh;
-  width: 42vw;
+  border-radius: 10px;
 }
 
-.kurt {
-  text-indent: 4.0vw;
-  font-size: 3vh;
-} */
+
+
 

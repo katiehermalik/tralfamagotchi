@@ -55,14 +55,15 @@ $('#engage').on('click', () => {
   Salo.isBored();
 });
 
-// $('.close').on('click', () => {
-//   $('.modal').fadeOut(1500);
-// });
+$('.close').on('click', () => {
+  $('.modal').fadeOut(1500);
+});
 
 class Pet {
-  constructor (name, age, sustenance, energy, engagement) {
+  constructor (name, age, stage, sustenance, energy, engagement) {
     this.name = name;
     this.age = age;
+    this.stage = stage;
     this.sustenance = sustenance;
     this.energy = energy;
     this.engagement = engagement;
@@ -124,9 +125,12 @@ class Pet {
     let self = this;
     self.ageTimerId = setInterval( function() {
       if (self.age === 2) {
-        // $('.modal').fadeIn(1500);
+        $('.modal').fadeIn(1500);
+        $('.popup-content').css('display', 'flex');
+        $('.popup-flex').css('display', 'flex');
         $('#adult-salo').fadeOut();
-        // $('.modal').fadeIn();
+        $('#adult-sleep').fadeOut();
+        $('#age').text(`Age: 3 (GAME OVER)`);
         clearInterval(self.ageTimerId);
         clearInterval(self.statusTimerId);
         clearInterval(moveTimerId);
@@ -135,7 +139,12 @@ class Pet {
         $('#engage').prop('disabled', true);
       } else {
         self.age++;
-        $('#age').text(`Age: ${self.age}`);
+        if (self.age === 1) {
+          self.stage = '(Teen)';
+        } else if (self.age === 2) {
+          self.stage = '(Adult)';
+        }
+        $('#age').text(`Age: ${self.age} ${self.stage}`);
         if (self.age === 1) {
           if ($('body').hasClass('dark')) {
             $('#baby-sleep').css('opacity', '0');
@@ -217,7 +226,7 @@ class Pet {
 
 class Tralfamagotchi extends Pet {
   constructor() {
-    super('Salo', 0, 50, 50, 50);
+    super('Salo', 0, '(Baby)', 50, 50, 50);
     $('#name').text(`Name: Salo`)
   }
 }
