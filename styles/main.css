@@ -177,7 +177,7 @@ h1 {
 }
 
 #rename {
-  font-size: 3vh;
+  font-size: 2.5vh;
   background: var(--background-accent);
   border: var(--button-border);
   border-radius: 5px;
@@ -211,9 +211,9 @@ h1 {
 }
 
 #input {
-  font-size: 1vw;
+  font-size: 1.5vw;
   height: 2vw;
-  width: 10vw;
+  width: 11.2vw;
   margin: 1vw 0 0 0;
 }
 
@@ -248,26 +248,43 @@ p #play-icon {
   bottom: 19vh;
   left: 51.5vw;
   height: 22vh;
+  opacity: 1;
 }
 
-.fade {
+/* .fade {
   transition: opacity 1s ease-in;
+} */
+
+#baby-sleep{
+  height: 22vh;
+  opacity: 0;
 }
 
 #baby-salo {
   height: 30vh;
-  display: none;
+  opacity: 0;
 } 
+
+#teen-sleep{
+  height: 30vh;
+  opacity: 0;
+}
 
 #teen-salo {
   height: 40vh;
-  display: none;
+  opacity: 0;
+}
+
+#adult-sleep{
+  height: 40vh;
+  opacity: 0;
 }
 
 #adult-salo {
-  height: 50vh;
-  display: none;
+  height: 51vh;
+  opacity: 0;
 }
+
 
 .salo {
   position:absolute;
@@ -276,6 +293,10 @@ p #play-icon {
   transform: scaleX();
 }
 
+.sleep{
+  bottom: 19vh;
+  left: 51vw;
+}
 /* ---------------------------------------------------------- Care Buttons */
 
 footer {
@@ -307,3 +328,69 @@ footer {
 .care-button:active {
   -webkit-box-shadow: 4px 3px 3px -2px rgba(0,0,0,0.75);
 }
+
+/* ---------------------------------------------------------- Modal */
+
+/* .popup-content {
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  background: var(--background-accent);
+  opacity: 1;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 2px 20px 2px rgba(0,0,0,0.3);
+}
+
+.popup-flex {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.popup-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.75;
+  z-index: 5;
+}
+
+.quote {
+  font-size: 16px;
+  line-height: 3vh;
+  padding: 1vh 2vh 3vh 2vh;
+  margin: 0;
+  width: 400px;
+}
+
+.popup-content h2 {
+ margin-top: 7vh;
+}
+
+.close {
+  font-size: 3vh;;
+  height: 4vh;
+  align-self: flex-end;
+  margin-right: 10vw
+}
+.modal-footer {
+  display: flex;
+  justify-content: space-around;
+  height: 5vh;
+  width: 42vw;
+}
+
+.kurt {
+  text-indent: 4.0vw;
+  font-size: 3vh;
+} */
+

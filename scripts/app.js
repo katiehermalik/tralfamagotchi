@@ -18,7 +18,7 @@
 $('#play').on('click', () => {
   Salo.startAgeTimer();
   Salo.startStatusTimer();
-  setTimeout(saloMove, 167);
+  setTimeout(move, 167);
   gifSwitch()
   $('#play').prop('disabled', true);
 });
@@ -42,7 +42,7 @@ $('#submit').on('click', () => {
     $('#name').text(`Name: Salo`);
   } 
 });
-
+$
 $('#food').on('click', () => {
   Salo.isHungry();
 });
@@ -54,6 +54,10 @@ $('#lights').on('click', () => {
 $('#engage').on('click', () => {
   Salo.isBored();
 });
+
+// $('.close').on('click', () => {
+//   $('.modal').fadeOut(1500);
+// });
 
 class Pet {
   constructor (name, age, sustenance, energy, engagement) {
@@ -80,6 +84,31 @@ class Pet {
       $('#energy').text(`Energy: ${this.energy}`);
       $('#energy-bar').val(`${this.energy}`);
       $('body').toggleClass('dark');
+      if ($('body').hasClass('dark')) {
+        clearInterval(moveTimerId);
+        if ($("#baby-salo").css('opacity') !== '0') {
+        $('#baby-salo').css('opacity', '0');
+        $('#baby-sleep').css('opacity', '1');
+        } else if ($("#teen-salo").css('opacity') !== '0') {
+          $('#teen-salo').css('opacity', '0');
+          $('#teen-sleep').css('opacity', '1');
+        } else if ($("#adult-salo").css('opacity') !== '0') {
+          $('#adult-salo').css('opacity', '0');
+          $('#adult-sleep').css('opacity', '1');
+        }
+      } else {
+        if ($("#baby-sleep").css('opacity') !== '0') {
+          $('#baby-sleep').css('opacity', '0');
+          $('#baby-salo').css('opacity', '1');
+          } else if ($("#teen-sleep").css('opacity') !== '0') {
+            $('#teen-sleep').css('opacity', '0');
+            $('#teen-salo').css('opacity', '1');
+          } else if ($("#adult-sleep").css('opacity') !== '0') {
+            $('#adult-sleep').css('opacity', '0');
+            $('#adult-salo').css('opacity', '1');
+          }
+        setTimeout(move, 167);
+      }
     }
   };
 
@@ -95,9 +124,9 @@ class Pet {
     let self = this;
     self.ageTimerId = setInterval( function() {
       if (self.age === 2) {
-        // TO DO // Stop at 3
-        $('#adult-salo').addClass('fade').css({opacity: 0,});
-        // alert('GAME OVER - So it goes.');
+        // $('.modal').fadeIn(1500);
+        $('#adult-salo').fadeOut();
+        // $('.modal').fadeIn();
         clearInterval(self.ageTimerId);
         clearInterval(self.statusTimerId);
         clearInterval(moveTimerId);
@@ -108,22 +137,32 @@ class Pet {
         self.age++;
         $('#age').text(`Age: ${self.age}`);
         if (self.age === 1) {
-          $('#baby-salo').addClass('fade').css({opacity: 0,});
-          $('#teen-salo').fadeIn(1500)
+          if ($('body').hasClass('dark')) {
+            $('#baby-sleep').css('opacity', '0');
+            $('#teen-sleep').css('opacity', '1');
+          } else {
+            $('#baby-salo').css('opacity', '0');
+            $('#teen-salo').css('opacity', '1');
+          }
         } else if (self.age === 2) {
-          $('#teen-salo').fadeOut(1500)
-          $('#adult-salo').fadeIn(1500);
+          if ($('body').hasClass('dark')) {
+            $('#teen-sleep').css('opacity', '0');
+            $('#adult-sleep').css('opacity', '1');
+          } else {
+            $('#teen-salo').css('opacity', '0');
+            $('#adult-salo').css('opacity', '1');
+          }
         } 
       }
-    }, 10000);
+    }, 30000);
   }
 
   startStatusTimer () {
     let self = this;
     self.statusTimerId = setInterval( function() {
       if (self.sustenance === 0 || self.energy === 0 || self.engagement === 0) {
-        $('#baby-salo').addClass('fade').css({opacity: 0,});
-        $('#teen-salo').addClass('fade').css({opacity: 0,});
+        $('#baby-salo').fadeOut(1500);
+        $('#teen-salo').fadeOut(1500);
         $('#adult-salo').fadeOut(1500);
         // alert('GAME OVER - So it goes.');
         clearInterval(self.statusTimerId);
@@ -147,6 +186,17 @@ class Pet {
             $('#engage-bar').val(`${self.engagement}`);
           } else {
             $('body').toggleClass('dark');
+            if($("#baby-sleep").css('opacity') !== '0') {
+              $('#baby-sleep').css('opacity', '0');
+              $('#baby-salo').css('opacity', '1');
+              } else if ($("#teen-sleep").css('opacity') !== '0') {
+                $('#teen-sleep').css('opacity', '0');
+                $('#teen-salo').css('opacity', '1');
+              } else if ($("#adult-sleep").css('opacity') !== '0') {
+                $('#adult-sleep').css('opacity', '0');
+                $('#adult-salo').css('opacity', '1');
+              }
+            setTimeout(move, 167);
           }
       } else {
           $('#food').prop('disabled', false);
@@ -176,33 +226,36 @@ const Salo = new Tralfamagotchi();
 
 
 function gifSwitch() {
-  $('#still-salo').hide();
-  $('#baby-salo').show();
+  console.log('hello');
+  $('#still-salo').css('opacity', '0');
+  $('#baby-salo').css('opacity', '1');
+  
 }
 
-let headedLeft = true;
+let movingLeft = true;
 
-function saloMove() {
+function move() {
   moveTimerId = setInterval( function () {
-    if (headedLeft === true) {
-      if ($('.salo').position().left > 50) {
+    if (movingLeft === true) {
+      if ($('.salo').position().left > 200) {
       $('.salo').animate({left: '-=4vw'}, 500, 'swing');
-      } else if ($('.salo').position().left < 50) {
+      } else if ($('.salo').position().left < 200) {
         console.log($('.salo').position());
         $('.salo').css('transform', 'scaleX(-1)');
         $('.salo').animate({left: '+=4vw'}, 500, 'swing');
-        headedLeft = false;
+        movingLeft = false;
       }
     
-    } else if (headedLeft === false) {
+    } else if (movingLeft === false) {
       console.log($('.salo').position());
-      if ($('.salo').position().left < 650) {
+      if ($('.salo').position().left < 500) {
       $('.salo').animate({left: '+=4vw'}, 500, 'swing');
-      } else if ($('.salo').position().left > 650) {
+      } else if ($('.salo').position().left > 500) {
         $('.salo').css('transform', 'scaleX(1)');
         $('.salo').animate({left: '-=4vw'}, 500, 'swing'); 
-        headedLeft = true
+        movingLeft = true;
       }
     }   
   }, 1350);
 }
+
