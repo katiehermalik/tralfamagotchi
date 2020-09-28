@@ -120,6 +120,7 @@ h1 {
   margin: 0;
   padding: 4vw;
   border-radius: 15px;
+  z-index: 4;
   -webkit-box-shadow: 4px 3px 4px -2px rgba(0,0,0,0.75);
 }
 
@@ -165,7 +166,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 2vh;
+  font-size: 3vh;
   color: var(--text-color);
   background: var(--background-main);
   height: 6vw;
@@ -177,7 +178,7 @@ h1 {
 }
 
 #rename {
-  font-size: 2vh;
+  font-size: 2.5vh;
   background: var(--background-accent);
   border: var(--button-border);
   border-radius: 5px;
@@ -234,13 +235,6 @@ p #play-icon {
   font-size: 5vh;
   padding: 4px;
 }
-
-/* ---------------------------------------------------------- Animations */
-
-/* @keyframes salomove {
-  from {right: 25vw;}
-  to {right: 30vw;}
-} */
 
 /* ---------------------------------------------------------- Morphing */
 
@@ -331,11 +325,12 @@ footer {
 .popup-content {
   position: relative;
   width: 50vw;
-  height: 50vh;
+  height: 60vh;
   background: var(--background-accent);
   opacity: 1;
   z-index: 10;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border-radius: 20px;
   -webkit-box-shadow: 2px 2px 20px 2px rgba(0,0,0,0.3);
@@ -377,6 +372,7 @@ footer {
   font-size: 3vh;;
   height: 4vh;
   border-radius: 10px;
+  margin-bottom: 3vh;
 }
 
 

@@ -14,6 +14,11 @@
       // - grab input value of form and update 'name'
 // Create Game Over alert if any value reaches 0 or age reaches 3.
 
+// ----------------------------------------  Global Variables
+
+let movingLeft = true;
+
+// ----------------------------------------  Event Listeners
 
 $('#play').on('click', () => {
   Salo.startAgeTimer();
@@ -25,6 +30,13 @@ $('#play').on('click', () => {
 
 $('#reset').on('click', () => {
   document.location.reload(true);
+});
+
+$('#rules').on('click', () => {
+  $('.modal').fadeIn(1500);
+  $('.popup-rules').fadeIn(1500);
+  $('.popup-content').css('display', 'flex');
+  $('.popup-flex').css('display', 'flex');
 });
 
 $('#rename').on('click', () => {
@@ -57,13 +69,17 @@ $('#engage').on('click', () => {
 
 $('.close').on('click', () => {
   $('.modal').fadeOut(1500);
+  $('.victory').fadeOut(1500);
+  $('.popup-rules').fadeOut(1500);
+  $('.game-over').fadeOut(1500);
+
 });
 
+// ----------------------------------- Tamagatchi class, methods, and timers
 class Pet {
-  constructor (name, age, stage, sustenance, energy, engagement) {
+  constructor (name, age, sustenance, energy, engagement) {
     this.name = name;
     this.age = age;
-    this.stage = stage;
     this.sustenance = sustenance;
     this.energy = energy;
     this.engagement = engagement;
@@ -79,12 +95,23 @@ class Pet {
     } 
   };
 
+  isBored () {
+    if (this.engagement < 50) {
+      this.engagement++;
+      $('#engagement').text(`Engagement: ${this.engagement}`);
+      $('#engage-bar').val(`${this.engagement}`);
+    }
+  };
+  
   isSleepy () {
     if (this.energy < 50) {
       this.energy++;
       $('#energy').text(`Energy: ${this.energy}`);
       $('#energy-bar').val(`${this.energy}`);
       $('body').toggleClass('dark');
+      
+      // Switching between still and animated images for sleeping and waking up
+      
       if ($('body').hasClass('dark')) {
         clearInterval(moveTimerId);
         if ($("#baby-salo").css('opacity') !== '0') {
@@ -113,24 +140,22 @@ class Pet {
     }
   };
 
-  isBored () {
-    if (this.engagement < 50) {
-      this.engagement++;
-      $('#engagement').text(`Engagement: ${this.engagement}`);
-      $('#engage-bar').val(`${this.engagement}`);
-    }
-  };
+  // -------------------------- Age Timer (increments)
 
   startAgeTimer () {
     let self = this;
     self.ageTimerId = setInterval( function() {
       if (self.age === 2) {
         $('.modal').fadeIn(1500);
+        $('.victory').fadeIn(1500);
         $('.popup-content').css('display', 'flex');
         $('.popup-flex').css('display', 'flex');
-        $('#adult-salo').fadeOut();
-        $('#adult-sleep').fadeOut();
-        $('#age').text(`Age: 3 (GAME OVER)`);
+        if ($('body').hasClass('dark')) {
+          $('body').toggleClass('dark');
+          $('#adult-sleep').css('opacity', '0');
+          $('#adult-salo').css('opacity', '1');
+        }
+        $('#age').text(`Age: 3`);
         clearInterval(self.ageTimerId);
         clearInterval(self.statusTimerId);
         clearInterval(moveTimerId);
@@ -139,12 +164,7 @@ class Pet {
         $('#engage').prop('disabled', true);
       } else {
         self.age++;
-        if (self.age === 1) {
-          self.stage = '(Teen)';
-        } else if (self.age === 2) {
-          self.stage = '(Adult)';
-        }
-        $('#age').text(`Age: ${self.age} ${self.stage}`);
+        $('#age').text(`Age: ${self.age}`);
         if (self.age === 1) {
           if ($('body').hasClass('dark')) {
             $('#baby-sleep').css('opacity', '0');
@@ -166,6 +186,8 @@ class Pet {
     }, 30000);
   }
 
+  // ----------------------------- Status Timer (decrements)
+
   startStatusTimer () {
     let self = this;
     self.statusTimerId = setInterval( function() {
@@ -173,13 +195,22 @@ class Pet {
         $('#baby-salo').fadeOut(1500);
         $('#teen-salo').fadeOut(1500);
         $('#adult-salo').fadeOut(1500);
-        // alert('GAME OVER - So it goes.');
+        $('#baby-sleep').fadeOut(1500);
+        $('#teen-sleep').fadeOut(1500);
+        $('#adult-sleep').fadeOut(1500);
+        $('.modal').fadeIn(1500);
+        $('.game-over').fadeIn(1500);
+        $('.popup-content').css('display', 'flex');
+        $('.popup-flex').css('display', 'flex');
         clearInterval(self.statusTimerId);
         clearInterval(self.ageTimerId);
         clearInterval(moveTimerId);
         $('#food').prop('disabled', true);
         $('#lights').prop('disabled', true);
         $('#engage').prop('disabled', true);
+
+        // Disable other 'care' buttons if sleeping
+
       } else if ($('body').hasClass('dark')) {
           if (self.energy <= 49) {
             $('#food').prop('disabled', true);
@@ -193,6 +224,9 @@ class Pet {
             self.engagement--;
             $('#engagement').text(`Engagement: ${self.engagement}`);
             $('#engage-bar').val(`${self.engagement}`);
+
+          // Switching to animated images if waking up and enabling all buttons
+
           } else {
             $('body').toggleClass('dark');
             if($("#baby-sleep").css('opacity') !== '0') {
@@ -224,24 +258,22 @@ class Pet {
   }
 }
 
+// ------------------------------------------- Instantiate Tralfamagotchi
 class Tralfamagotchi extends Pet {
   constructor() {
-    super('Salo', 0, '(Baby)', 50, 50, 50);
+    super('Salo', 0, 50, 50, 50);
     $('#name').text(`Name: Salo`)
   }
 }
 
 const Salo = new Tralfamagotchi();
 
+// ------------------------------------------------------ Animation
 
 function gifSwitch() {
-  console.log('hello');
   $('#still-salo').css('opacity', '0');
-  $('#baby-salo').css('opacity', '1');
-  
+  $('#baby-salo').css('opacity', '1');  
 }
-
-let movingLeft = true;
 
 function move() {
   moveTimerId = setInterval( function () {
@@ -249,14 +281,12 @@ function move() {
       if ($('.salo').position().left > 200) {
       $('.salo').animate({left: '-=4vw'}, 500, 'swing');
       } else if ($('.salo').position().left < 200) {
-        console.log($('.salo').position());
         $('.salo').css('transform', 'scaleX(-1)');
         $('.salo').animate({left: '+=4vw'}, 500, 'swing');
         movingLeft = false;
       }
     
     } else if (movingLeft === false) {
-      console.log($('.salo').position());
       if ($('.salo').position().left < 500) {
       $('.salo').animate({left: '+=4vw'}, 500, 'swing');
       } else if ($('.salo').position().left > 500) {
