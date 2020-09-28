@@ -24,7 +24,7 @@ $('#play').on('click', () => {
   Salo.startAgeTimer();
   Salo.startStatusTimer();
   setTimeout(move, 167);
-  gifSwitch()
+  gifSwitch();
   $('#play').prop('disabled', true);
 });
 
@@ -258,7 +258,7 @@ class Pet {
   }
 }
 
-// ------------------------------------------- Instantiate Tralfamagotchi
+// ----------------------------------- Instantiate Tralfamagotchi
 class Tralfamagotchi extends Pet {
   constructor() {
     super('Salo', 0, 50, 50, 50);
@@ -287,9 +287,9 @@ function move() {
       }
     
     } else if (movingLeft === false) {
-      if ($('.salo').position().left < 500) {
+      if ($('.salo').position().left < 600) {
       $('.salo').animate({left: '+=4vw'}, 500, 'swing');
-      } else if ($('.salo').position().left > 500) {
+      } else if ($('.salo').position().left > 600) {
         $('.salo').css('transform', 'scaleX(1)');
         $('.salo').animate({left: '-=4vw'}, 500, 'swing'); 
         movingLeft = true;

@@ -375,6 +375,19 @@ footer {
   margin-bottom: 3vh;
 }
 
+/* ----------------------------------------------------- Credit */
+
+.credit {
+  color: var(--text-color);
+  position: absolute;
+  font-size: 1.8vh;
+  bottom: 2vh;
+  right: 2vw;
+}
+
+#link {
+  color: rgb(140, 158, 64);
+}
 
 
 
