@@ -363,7 +363,7 @@ footer {
 }
 
 .popup-content h2 {
- font-size: 5vh;
+ font-size: 2vw;
  margin-top: 7vh;
  width: 40vw;
 }
@@ -373,6 +373,15 @@ footer {
   height: 4vh;
   border-radius: 10px;
   margin-bottom: 3vh;
+}
+
+/* ----------------------------------------------------- Credit */
+
+.spaceship {
+  position: absolute;
+  width: 30vw;
+  right: 0;
+  bottom: 0;
 }
 
 /* ----------------------------------------------------- Credit */
